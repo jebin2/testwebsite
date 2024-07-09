@@ -75,7 +75,7 @@ const Layout = (props) => {
 								<a onclick={handleNavLinkClick} class={location.pathname === '/whychooseus' ? 'nav-link active' : 'nav-link'} aria-current="page" href="/whychooseus">Why Choose Us?</a>
 							</li>
 							<li class="nav-item fz20">
-								<a onclick={handleNavLinkClick} class={location.pathname === '/getintouch' ? 'nav-link active' : 'nav-link'} aria-current="page" href="/getintouch" target='blank'>Get in touch</a>
+								<a onclick={handleNavLinkClick} class={location.pathname === '/getintouch' ? 'nav-link active' : 'nav-link'} aria-current="page" href="/getintouch">Get in touch</a>
 							</li>
 						</ul>
 					</div>
