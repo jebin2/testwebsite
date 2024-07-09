@@ -75,6 +75,9 @@ nav {
 .fw800 {
     font-weight: 800;
 }
+.ourservices {
+    scroll-margin-top: 200px;
+}
 .section {
     margin-right: 150px;
     padding: 20px;
@@ -109,4 +112,8 @@ nav {
     padding: 20px 0;
     text-align: center;
     letter-spacing: 50px;
+}
+.connectwithus {
+    letter-spacing: normal !important;
+    margin-left: -30px;
 }

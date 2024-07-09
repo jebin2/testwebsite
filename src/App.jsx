@@ -27,6 +27,11 @@ function App() {
 	};
 	createEffect(() => {
 		window.addEventListener('scroll', scrollHandler);
+		window.addEventListener('load', function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 0);
+        });
 		const dropdownElements = document.querySelectorAll('.dropdown');
 		dropdownElements.forEach(dropdownElement => enableHoverForDropdown(dropdownElement));
 		const textElement = document.querySelector('.welcome');
@@ -38,7 +43,7 @@ function App() {
 			delay: 0          // Delay before animation starts
 		});
 
-		gsap.utils.toArray('#ourserives,.section').forEach(section => {
+		gsap.utils.toArray('#ourservices,.section').forEach(section => {
 			gsap.fromTo(section,
 				{ opacity: 0, y: 100 },
 				{
@@ -52,6 +57,11 @@ function App() {
 			);
 		});
 	}, []);
+
+	const scrollToView = (id) => {
+		const element = document.getElementById(id);
+		element.scrollIntoView({ behavior: "auto", block: "start", inline: "start" });
+	}
 
 
 	return (
@@ -74,7 +84,7 @@ function App() {
 									Our Services
 								</a>
 								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#ourserives">Customized Energy Storage Solutions</a></li>
+									<li><a class="dropdown-item" onClick={[scrollToView, "ourservices"]}>Customized Energy Storage Solutions</a></li>
 									<li><a class="dropdown-item" href="#">Battery Energy Storage Systems (BESS)</a></li>
 									<li><a class="dropdown-item" href="#">UPS Applications</a></li>
 									<li><a class="dropdown-item" href="#">Turnkey Solutions</a></li>
@@ -115,7 +125,7 @@ function App() {
 				</div>
 			</div>
 			<div>
-				<div id="ourserives" class="pL150per mT40">
+				<div id="ourservices" class="pL150per mT40 ourservices">
 					<span class="fw800 fz20">Our Services</span>
 					<div id="cess" class="section mT20 fz20">
 						<span class="fw800">Customized Energy Storage Solutions</span>
@@ -159,6 +169,7 @@ function App() {
 			</div>
 			<div style={{height: "50px"}}></div>
 			<footer class="footer">
+				<span class="connectwithus fw800">Connect With Us</span>
 				<div class="container fs-2">
 						<span>
 							<a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
