@@ -51,7 +51,7 @@ const Layout = (props) => {
         <>
 			<nav class="navbar fixed-top bg-body-tertiary navbar-expand-lg pL50 pR50">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="#">
+					<a class="navbar-brand" href="/">
 						<img src="/logo.png" alt="" width="125" height="24" class="d-inline-block align-text-top" />
 					</a>
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
