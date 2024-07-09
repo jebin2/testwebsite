@@ -2,11 +2,106 @@ import './App.css'
 import { createSignal, createEffect } from 'solid-js';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { For } from "solid-js"
+import { Show } from "solid-js"
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
 	const [onScrollHappen, setOnScrollHappen] = createSignal(false);
+	const [content, setContent] = createSignal([{
+		"head": "Our Services",
+		"list": [{
+			"title": "Customized Energy Storage Solutions",
+			"titleInfo": "We offer comprehensive services encompassing design, manufacturing, and integration of tailored energy storage solutions",
+			"subInfo": [{
+				"title": "Design Expertise",
+				"titleInfo": "Collaborative approach to understand your unique requirements and develop custom solutions that meet specific performance, size, and integration needs."
+			}, {
+				"title": "Advanced Manufacturing",
+				"titleInfo": "State-of-the-art facilities ensuring precision engineering and quality control throughout the production process."
+			}, {
+				"title": "Scalable Solutions",
+				"titleInfo": "Modular designs that allow for scalable installations, adapting to varying power and energy demands, from small-scale C&I applications to large utility-scale projects."
+			}, {
+				"title": "Safety and Reliability",
+				"titleInfo": "Rigorous testing and adherence to international standards (such as IEC, UL, and IEEE) to ensure safe operation and reliability under diverse environmental conditions."
+			}]
+		}, {
+			"title": "Battery Energy Storage Systems (BESS)",
+			"titleInfo": "Our BESS solutions leverage cutting-edge battery technologies to optimize energy storage and management",
+			"subInfo": [{
+				"title": "Grid Integration",
+				"titleInfo": "Seamless integration with existing infrastructure or renewable energy sources to stabilize grid fluctuations and support renewable energy integration."
+			}, {
+				"title": "Advanced Controls",
+				"titleInfo": "Intelligent energy management systems with real-time monitoring and predictive analytics for optimized performance and operational efficiency."
+			}, {
+				"title": "Longevity and Efficiency",
+				"titleInfo": "High-performance battery chemistries and management strategies to maximize energy efficiency, minimize degradation, and extend operational lifespan."
+			}, {
+				"title": "Flexibility",
+				"titleInfo": "Customizable configurations to meet specific project requirements, providing versatile solutions for both grid-connected and off-grid applications."
+			}]
+		}, {
+			"title": "UPS Applications",
+			"subInfo": [{
+				"title": "Domestic Use",
+				"titleInfo": "Ensure uninterrupted power supply for homes and residential buildings with reliable UPS solutions powered by advanced BESS technology. Protect sensitive electronics and maintain essential services during power outages."
+			}, {
+				"title": "Data Centers",
+				"titleInfo": "Critical infrastructure demands reliable power continuity. Our UPS solutions provide seamless backup power to data centers, ensuring uninterrupted operation and safeguarding against data loss or downtime."
+			}]
+		}, {
+			"title": "Turnkey Solutions",
+			"titleInfo": "From concept to deployment, we offer comprehensive turnkey solutions that streamline the implementation of energy storage projects",
+			"subInfo": [{
+				"title": "Project Management",
+				"titleInfo": "Dedicated project managers oversee every stage, from initial consultation and design to installation, commissioning, and ongoing support."
+			}, {
+				"title": "Integration Expertise",
+				"titleInfo": "Seamless integration with existing infrastructure, ensuring compatibility and optimal performance with minimal disruption."
+			}, {
+				"title": "Training and Support",
+				"titleInfo": "Comprehensive training programs and ongoing support to empower clients with the knowledge and tools to maximize the benefits of their energy storage systems."
+			}, {
+				"title": "Post-Deployment Services",
+				"titleInfo": "Proactive maintenance programs and remote monitoring services to ensure continuous operation and performance optimization."
+			}]
+		}]
+	}, {
+		"head": "Industries we serve",
+		"list": [{
+			"titleInfo": "Our customized energy storage solutions empower businesses and communities across various sectors to embrace sustainable energy practices and achieve operational excellence:",
+			"subInfo": [{
+				"title": "Commercial & Industrial (C&I)",
+				"titleInfo": "Enhance energy reliability, reduce peak demand charges, and optimize energy consumption with tailored BESS solutions for commercial facilities, data centers, manufacturing plants, and more.",
+			}, {
+				"title": "Renewable Energy Integration",
+				"titleInfo": "Support renewable energy projects with scalable storage solutions that store excess energy and ensure stable grid operation."
+			}, {
+				"title": "Utilities",
+				"titleInfo": "Optimize grid stability, peak shaving, and frequency regulation with advanced ESS deployments tailored to utility-scale applications."
+			}, {
+				"title": "Telecommunications",
+				"titleInfo": "Ensure continuous power supply for critical telecom infrastructure with resilient BESS solutions."
+			}, {
+				"title": "Transportation",
+				"titleInfo": "Enhance the performance and efficiency of electric vehicle (EV) charging stations with optimized energy storage solutions."
+			}]
+		}]
+	}, {
+		"head": "Team",
+		"list":[{
+			"title": "Executive Team",
+			"titleInfo": "At Onetron, we are supported by a team of distinguished members who bring extensive experience and expertise in energy storage solutions. Their leadership helps us innovate develop and deliver cutting-edge solutions in the energy storage industry."
+		}, {
+			"title": "Advisory Team",
+			"subTitle": "Why Advisors Matter for Onetron",
+			"titleInfo": "At Onetron, our commitment to delivering cutting-edge energy storage solutions is reinforced by the invaluable expertise of our distinguished advisors. Their collective knowledge and strategic guidance play a pivotal role in shaping our innovation roadmap, market strategy, and operational excellence in the energy storage sector",
+			"titleInfo2": "At Onetron, our advisors are integral to our success and leadership in the energy storage solutions industry. Their expertise, strategic guidance, and commitment to innovation empower us to deliver superior value, drive sustainable growth, and shape the future of energy storage technologies. Together, we are dedicated to advancing the transition towards a cleaner, more sustainable energy future."
+		}]
+	}]);
 	const enableHoverForDropdown = (dropdownElement, toggle = ".dropdown-toggle") => {
 		const showDropdown = () => {
 			const bsDropdown = new bootstrap.Dropdown(dropdownElement.querySelector(toggle));
@@ -21,17 +116,17 @@ function App() {
 		dropdownElement.addEventListener('mouseenter', showDropdown);
 		dropdownElement.addEventListener('mouseleave', hideDropdown);
 	}
-    const scrollHandler = () => {
+	const scrollHandler = () => {
 		const scrollY = window.scrollY;
 		setOnScrollHappen(scrollY > 0); // Update state based on scroll position
 	};
 	createEffect(() => {
 		window.addEventListener('scroll', scrollHandler);
-		window.addEventListener('load', function() {
-            setTimeout(function() {
-                window.scrollTo(0, 0);
-            }, 0);
-        });
+		window.addEventListener('load', function () {
+			setTimeout(function () {
+				window.scrollTo(0, 0);
+			}, 0);
+		});
 		const dropdownElements = document.querySelectorAll('.dropdown');
 		dropdownElements.forEach(dropdownElement => enableHoverForDropdown(dropdownElement));
 		const textElement = document.querySelector('.welcome');
@@ -43,7 +138,7 @@ function App() {
 			delay: 0          // Delay before animation starts
 		});
 
-		gsap.utils.toArray('#ourservices,.section').forEach(section => {
+		gsap.utils.toArray('.title,.section').forEach(section => {
 			gsap.fromTo(section,
 				{ opacity: 0, y: 100 },
 				{
@@ -85,7 +180,7 @@ function App() {
 								</a>
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" onClick={[scrollToView, "ourservices"]}>Customized Energy Storage Solutions</a></li>
-									<li><a class="dropdown-item" href="#">Battery Energy Storage Systems (BESS)</a></li>
+									<li><a class="dropdown-item" onClick={[scrollToView, "industriesweserve"]}>Battery Energy Storage Systems (BESS)</a></li>
 									<li><a class="dropdown-item" href="#">UPS Applications</a></li>
 									<li><a class="dropdown-item" href="#">Turnkey Solutions</a></li>
 								</ul>
@@ -125,72 +220,62 @@ function App() {
 				</div>
 			</div>
 			<div>
-				<div id="ourservices" class="pL150per mT40 ourservices">
-					<span class="fw800 fz20">Our Services</span>
-					<div id="cess" class="section mT20 fz20">
-						<span class="fw800">Customized Energy Storage Solutions</span>
-						<div>We offer comprehensive services encompassing design, manufacturing, and integration of tailored energy storage solutions</div>
-						<ul>
-							<li>
-								<span class="fw800">Design Expertise:</span> Collaborative approach to understand your unique requirements and develop custom solutions that meet specific performance, size, and integration needs.
-							</li>
-							<li>
-								<span class="fw800">Advanced Manufacturing:</span> State-of-the-art facilities ensuring precision engineering and quality control throughout the production process.
-							</li>
-							<li>
-								<span class="fw800">Scalable Solutions:</span> Modular designs that allow for scalable installations, adapting to varying power and energy demands, from small-scale C&I applications to large utility-scale projects.
-							</li>
-							<li>
-								<span class="fw800">Safety and Reliability:</span> Rigorous testing and adherence to international standards (such as IEC, UL, and IEEE) to ensure safe operation and reliability under diverse environmental conditions.
-							</li>
-						</ul>
-					</div>
-					<div id="bess" class="section mT20 fz20">
-						<span class="fw800">Battery Energy Storage Systems</span>
-						<div>
-							Our BESS solutions leverage cutting-edge battery technologies to optimize energy storage and management
+				<For each={content()}>
+					{(item, index) => (
+						<div class="pL150per mT40 title">
+							<span class="fw800 fz20">{item.head}</span>
+							<For each={item.list}>
+								{(list, listindex) => (
+
+									<div class="section mT20 fz20">
+										<span class="fw800">{list.title}</span>
+										<Show when={list.subTitle}>
+											<div>{list.subTitle}</div>
+										</Show>
+										<div>{list.titleInfo}</div>
+										<Show when={list.titleInfo2}>
+											<div>{list.titleInfo2}</div>
+										</Show>
+										<ul>
+											<For each={list.subInfo}>
+												{(subitem, subindex) => (
+													<li>
+														<span class="fw800">{subitem.title}:</span> {subitem.titleInfo}
+													</li>
+												)}
+											</For>
+										</ul>
+									</div>
+								)}
+							</For>
 						</div>
-						<ul>
-							<li>
-								<span class="fw800">Grid Integration:</span> Seamless integration with existing infrastructure or renewable energy sources to stabilize grid fluctuations and support renewable energy integration.
-							</li>
-							<li>
-								<span class="fw800">Advanced Controls:</span> Intelligent energy management systems with real-time monitoring and predictive analytics for optimized performance and operational efficiency.
-							</li>
-							<li>
-								<span class="fw800">Longevity and Efficiency:</span> High-performance battery chemistries and management strategies to maximize energy efficiency, minimize degradation, and extend operational lifespan.
-							</li>
-							<li>
-								<span class="fw800">Flexibility:</span> Customizable configurations to meet specific project requirements, providing versatile solutions for both grid-connected and off-grid applications.
-							</li>
-						</ul>
-					</div>
-				</div>
+					)}
+				</For>
 			</div>
-			<div style={{height: "50px"}}></div>
+			<div style={{ height: "50px" }}></div>
 			<footer class="footer">
 				<span class="connectwithus fw800">Connect With Us</span>
 				<div class="container fs-2">
-						<span>
-							<a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-								<i class="bi bi-facebook"></i>
-							</a>
-						</span>
-						<span>
-							<a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-								<i class="bi bi-twitter-x"></i>
-							</a>
-						</span>
-						<span>
-							<a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-								<i class="bi bi-linkedin"></i>
-							</a>
-						</span>
-						<span>
-							<a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-								<i class="bi bi-instagram"></i>
-							</a>
-						</span>
+					<span>
+						<a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+							<i class="bi bi-facebook"></i>
+						</a>
+					</span>
+					<span>
+						<a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+							<i class="bi bi-twitter-x"></i>
+						</a>
+					</span>
+					<span>
+						<a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+							<i class="bi bi-linkedin"></i>
+						</a>
+					</span>
+					<span>
+						<a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+							<i class="bi bi-instagram"></i>
+						</a>
+					</span>
 				</div>
 			</footer>
 		</>
