@@ -20,9 +20,9 @@
     margin-top: 40px;
 }
 .welcome {
-    padding-top: 100px;
+    padding-top: 70px;
     font-weight: 800;
-    color: coral;
+    color: #ff6c6d;
 }
 .vision {
     padding-top:50px;
@@ -35,7 +35,9 @@
 }
 .mainContent {
     animation: fadeInUp 1s ease-out;
-    max-width: 1200px;
+    width: 80%;
+    margin: 0 auto;
+    display: inline-flex;
 }
 @keyframes fadeInUp {
     0% {

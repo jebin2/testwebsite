@@ -6,11 +6,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
-    /* background: antiquewhite; */
-    background: #edc9bc;
+    background: white;
     scroll-behavior: smooth;
 }
+
 /* Footer Styles */
 .footer {
     display: block;
@@ -22,32 +23,156 @@ body {
     letter-spacing: 50px;
     height: 100px;
 }
+
 .hide {
     display: none !important;
 }
+
 .removeBrowserDefaultOutline:focus {
     outline: none;
     box-shadow: none;
 }
+
 .navbar-nav .nav-item {
     margin-left: 20px;
 }
+
 .navbar-nav .nav-link:hover {
-    color: coral !important;
+    color: #ff6c6d !important;
 }
+
 .navbar-nav .nav-link {
     color: #333 !important;
 }
+
 .navbar-brand img {
     width: 150px;
 }
+
 nav {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .nav-link.active {
-    color: coral !important;
+    color: #ff6c6d !important;
 }
+
 .connectwithus {
     letter-spacing: normal !important;
     margin-left: -30px;
+}
+
+.pF {
+    position: fixed
+}
+
+.img-fluid {
+    position: absolute;
+    margin-left: 80%;
+    width: 10%;
+    margin-top: 2%;
+    filter: invert(1);
+}
+
+.storageImg {
+    height: 200px;
+}
+
+.visionImg {
+    width: 30%;
+}
+
+.row {
+    margin-right: auto !important;
+}
+
+.visionImg img {
+    height: auto;
+}
+
+.visionText {
+    align-content: center;
+}
+
+.subHead {
+    font-size: xx-large;
+    font-weight: 900;
+    width: 50%;
+    align-content: center;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.footer i,
+.visionText span {
+    color: #ff6c6d;
+    font-size: xx-large;
+}
+
+.mainContent strong {
+    display: contents;
+    color: #ff6c6d;
+}
+
+.section-title {
+    color: #ff6c6d;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.feature-image {
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.industry-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.industry-box {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 15px;
+    border-radius: 5px;
+    flex: 1 1 calc(33% - 20px);
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.industry-box:hover {
+    box-shadow: 0 6px 8px rgba(255 108 109);
+    transform: translateY(-2px);
+    transition: all 0.2s ease-in-out;
+}
+
+.arrow-down {
+    font-size: xxx-large;
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    /* Ensure it's above other content */
+    animation: blink 1s infinite;
+    /* Example of blinking animation */
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
